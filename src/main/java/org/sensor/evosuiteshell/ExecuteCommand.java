@@ -56,7 +56,7 @@ public class ExecuteCommand {
 					e.printStackTrace();
 				}
 			}
-			new File(batFilePath).delete();
+//			new File(batFilePath).delete();
 		}
 		return lines;
 	}

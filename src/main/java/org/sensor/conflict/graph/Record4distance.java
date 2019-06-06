@@ -1,7 +1,7 @@
 package org.sensor.conflict.graph;
 
 public class Record4distance extends IRecord {
-	private String riskMthd;//riskMethod name
+	private String riskMthd;// riskMethod name
 	private double branch;
 	private double distance;
 
@@ -16,12 +16,15 @@ public class Record4distance extends IRecord {
 		return branch;
 	}
 
-	
 	public double getDistance() {
 		return distance;
 	}
 
 	public String getName() {
+		return riskMthd;
+	}
+
+	public String getRiskMethod() {
 		return riskMthd;
 	}
 

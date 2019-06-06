@@ -200,7 +200,7 @@ public class Conflict {
 						break;
 					}
 
-					Map<String, IBook> distanceBooks = new Dog(distanceGraph).findRlt(distanceGraph.getHostNds(),
+					Map<String, IBook> distanceBooks = new Dog(distanceGraph).findRlt(distanceGraph.getHostNodes(),
 							Conf.DOG_DEP_FOR_DIS, Strategy.NOT_RESET_BOOK);
 					bottomMethods = depJarJRisk.getMethodBottom(distanceBooks);
 					if (isUsedDepJar) {

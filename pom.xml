@@ -20,24 +20,18 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.evosuite</groupId>
-			<artifactId>evosuite-master</artifactId>
-			<version>${evosuite.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.evosuite</groupId>
 			<artifactId>evosuite-client</artifactId>
 			<version>${evosuite.version}</version>
 		</dependency>
-		<!-- <dependency>
-			<groupId>org.evosuite</groupId>
-			<artifactId>evosuite-runtime</artifactId>
-			<version>${evosuite.version}</version>
-		</dependency>
 		<dependency>
 			<groupId>org.evosuite</groupId>
-			<artifactId>evosuite-shaded</artifactId>
+			<artifactId>evosuite-master</artifactId>
 			<version>${evosuite.version}</version>
-		</dependency> -->
+		</dependency>
+		<!-- <dependency> <groupId>org.evosuite</groupId> <artifactId>evosuite-runtime</artifactId> 
+			<version>${evosuite.version}</version> </dependency> <dependency> <groupId>org.evosuite</groupId> 
+			<artifactId>evosuite-shaded</artifactId> <version>${evosuite.version}</version> 
+			</dependency> -->
 		<dependency>
 			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-plugin-api</artifactId>

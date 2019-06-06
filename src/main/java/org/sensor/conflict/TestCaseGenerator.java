@@ -31,7 +31,7 @@ import org.sensor.conflict.vo.DepJar;
 /**
  * 测试用例生成器
  * 
- * @author 
+ * @author wangchao
  *
  */
 public class TestCaseGenerator {
@@ -74,7 +74,6 @@ public class TestCaseGenerator {
 		}
 	}
 
-
 	private boolean writeJarRisk(DepJarJRisk jarRisk, String outDir, String projectConflict, boolean append) {
 		MavenUtil.i().getLog().info("find riskPath for:" + projectConflict);
 		String pathFile = outDir + "p_" + projectConflict + "@" + jarRisk.getVersion() + ".txt";
@@ -85,8 +84,8 @@ public class TestCaseGenerator {
 				return false;
 			}
 			// TODO debug distance graph.
-			GraphPrinter.printGraph(distanceGraph, Conf.outDir + "graph.txt", distanceGraph.getHostNds());
-			Map<String, IBook> distanceBooks = new Dog(distanceGraph).findRlt(distanceGraph.getHostNds(),
+			GraphPrinter.printGraph(distanceGraph, Conf.outDir + "graph.txt", distanceGraph.getHostNodes());
+			Map<String, IBook> distanceBooks = new Dog(distanceGraph).findRlt(distanceGraph.getHostNodes(),
 					Conf.DOG_DEP_FOR_DIS, Strategy.NOT_RESET_BOOK);
 			Set<String> nds2remain = new HashSet<String>();
 			for (IBook book : distanceBooks.values()) {

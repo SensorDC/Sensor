@@ -11,11 +11,11 @@ import org.sensor.conflict.container.Conflicts;
 import org.sensor.conflict.container.DepJars;
 import org.sensor.conflict.graph.Book4path;
 import org.sensor.conflict.graph.Dog;
-import org.sensor.conflict.graph.Graph4path;
 import org.sensor.conflict.graph.IBook;
 import org.sensor.conflict.graph.IRecord;
 import org.sensor.conflict.graph.Record4path;
 import org.sensor.conflict.graph.Dog.Strategy;
+import org.sensor.conflict.graph.Graph4distance;
 import org.sensor.conflict.risk.jar.DepJarJRisk;
 import org.sensor.conflict.util.Conf;
 import org.sensor.conflict.util.MavenUtil;
@@ -42,7 +42,7 @@ public class SemanticsRiskWriter {
 
 			for (Conflict conflict : Conflicts.i().getConflicts()) {
 				for (DepJarJRisk depJarRisk : conflict.getJarRisks()) {
-					Graph4path pathGraph = depJarRisk.getMethodPathGraphForSemanteme();
+					Graph4distance pathGraph = depJarRisk.getMethodPathGraphForSemanteme();
 					Set<String> hostNodes = pathGraph.getHostNodes();
 					Map<String, IBook> pathBooks = new Dog(pathGraph).findRlt(hostNodes, Conf.DOG_DEP_FOR_PATH,
 							Strategy.NOT_RESET_BOOK);

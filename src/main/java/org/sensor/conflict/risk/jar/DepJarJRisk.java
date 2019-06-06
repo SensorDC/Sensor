@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.sensor.conflict.GlobalVar;
-
 import org.sensor.conflict.container.DepJars;
 import org.sensor.conflict.container.SemantemeMethods;
 import org.sensor.conflict.graph.Graph4distance;
@@ -35,7 +34,7 @@ import org.sensor.conflict.vo.MethodCall;
 /**
  * 依赖风险jar
  * 
- * @author 
+ * @author
  *
  */
 public class DepJarJRisk {
@@ -259,7 +258,7 @@ public class DepJarJRisk {
 	}
 
 	// 得到语义冲突的路径图
-	public Graph4path getMethodPathGraphForSemanteme() {
+	public Graph4distance getMethodPathGraphForSemanteme() {
 
 		Set<String> semantemeRiskMethods = getSemantemeRiskMethods();
 		Set<String> riskMethods = new HashSet<String>();
@@ -283,17 +282,17 @@ public class DepJarJRisk {
 			usedDepJarGraphForMethodOutPath = null;
 
 			if (riskMethods.size() > 0) {
-				IGraph iGraph = SootJRiskCg.i().getGraph(this, new JRiskMthdPathCgTf(this, riskMethods));
+				IGraph iGraph = SootJRiskCg.i().getGraph(this, new JRiskDistanceCgTf(this, riskMethods));
 				if (iGraph != null) {
-					return (Graph4path) iGraph;
+					return (Graph4distance) iGraph;
 				} else {
-					return new Graph4path(new HashMap<String, Node4path>(), new ArrayList<MethodCall>());
+					return new Graph4distance(new HashMap<String, Node4distance>(), new ArrayList<MethodCall>());
 				}
 			} else {
-				return new Graph4path(new HashMap<String, Node4path>(), new ArrayList<MethodCall>());
+				return new Graph4distance(new HashMap<String, Node4distance>(), new ArrayList<MethodCall>());
 			}
 		} else {
-			return new Graph4path(new HashMap<String, Node4path>(), new ArrayList<MethodCall>());
+			return new Graph4distance(new HashMap<String, Node4distance>(), new ArrayList<MethodCall>());
 		}
 	}
 //	private Map<String, IBook> getBooks4distance() {

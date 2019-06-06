@@ -55,7 +55,7 @@ public class Graph4distance implements IGraph {
 		return new Graph4path(name2pathNode);
 	}
 
-	public Set<String> getHostNds() {
+	public Set<String> getHostNodes() {
 		Set<String> hostNds = new HashSet<String>();
 		for (Node4distance node : name2node.values()) {
 			if (node.isHostNode())
