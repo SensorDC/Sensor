@@ -41,7 +41,7 @@ public class JRiskMethodOutPathCgTf extends JRiskCgTf{
 			while (sootMethodIterator.hasNext()) {
 				SootMethod sootMethod = sootMethodIterator.next();
 				String methodName = sootMethod.getSignature();
-				if (riskMthds.contains(methodName) && sootMethod.hasActiveBody()) {
+				if (riskMthds.contains(methodName) && sootMethod.hasActiveBody() && sootMethod.isPublic()) {
 					semantemeMethod = new SemantemeMethod(methodName);
 					semantemeMethod.setUnits(sootMethod.getActiveBody().getAllUnitBoxes());
 					semantemeMethod.setValues(sootMethod.getActiveBody().getUseAndDefBoxes());

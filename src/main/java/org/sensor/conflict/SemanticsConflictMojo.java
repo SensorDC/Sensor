@@ -12,6 +12,9 @@ public class SemanticsConflictMojo extends ConflictMojo {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
+//		SemanticsConflictWriter.outPath = Conf.outDir;
+//		new SemanticsConflictWriter().writeSemanticsConflict();
+
 		new SemanticsConflictWriter().writeSemanticsConflict(Conf.outDir);
 	}
 }

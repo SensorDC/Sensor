@@ -28,11 +28,21 @@ public class TestCaseUtil {
 		return paths;
 	}
 
-	public static void main(String[] args) {
-		for (String path : getFiles("C:\\Users\\Flipped\\eclipse-workspace\\Host\\src")) {
-			if (path.endsWith(".java"))
-				System.out.println(path);
-		}
+//	public static void main(String[] args) {
+//		for (String path : getFiles("/Users/wangchao/eclipse-workspace/Host/src")) {
+//			if (path.endsWith(".java"))
+//				System.out.println(path);
+//		}
+//	}
 
+	public static void delete(String path) {
+		File f = new File(path);
+		if (f.isDirectory()) {//如果是目录，先递归删除
+			String[] list = f.list();
+			for (int i = 0; i < list.length; i++) {
+				delete(path + "//" + list[i]);//先删除目录下的文件
+			}
+		}
+		f.delete();
 	}
 }

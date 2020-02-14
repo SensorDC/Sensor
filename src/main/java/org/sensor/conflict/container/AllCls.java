@@ -7,7 +7,7 @@ import java.util.Set;
 import org.sensor.conflict.vo.DepJar;
 
 /**
- * @author 
+ * @author asus
  *FinalClasses is set of ClassVO,but AllCls is set of class signature.
  *FinalClasses是ClassVO的集合，但AllCls是类签名的集合。
  */

@@ -10,7 +10,6 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import org.sensor.conflict.GlobalVar;
-
 import org.sensor.conflict.util.MavenUtil;
 
 public class Dog {

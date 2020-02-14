@@ -8,7 +8,6 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import org.sensor.conflict.GlobalVar;
-
 import org.sensor.conflict.util.SootUtil;
 
 public class Node4distance implements INode {

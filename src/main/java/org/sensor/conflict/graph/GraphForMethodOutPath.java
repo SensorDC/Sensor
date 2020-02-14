@@ -85,7 +85,7 @@ public Map<String, SemantemeMethod> getSemantemeMethods() {
 public void enhancedLevelForInheritanceMethod(Map<String, Integer> differenceMethod, Set<String> thrownMethods) {
 	for (String method : thrownMethods) {
 		if (differenceMethod.containsKey(method)) {
-			System.out.println("enhancedLevelForInheritanceMethod>>>>>" + method);
+//			System.out.println("enhancedLevelForInheritanceMethod>>>>>" + method);
 			differenceMethod.replace(method, 100);
 		}
 	}

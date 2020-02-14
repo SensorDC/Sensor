@@ -3,15 +3,14 @@ package org.sensor.conflict.container;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.sensor.conflict.GlobalVar;
-
 import javassist.ClassPool;
+import org.sensor.conflict.GlobalVar;
 import org.sensor.conflict.util.MavenUtil;
 import org.sensor.conflict.vo.DepJar;
 
 /**
  * 所有被引用的cls
- * @author 
+ * @author wangchao
  *
  */
 public class AllRefedCls {

@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.sensor.conflict.GlobalVar;
-
 import org.sensor.conflict.risk.jar.DepJarJRisk;
 import org.sensor.conflict.util.MavenUtil;
 import org.sensor.conflict.util.SootUtil;
@@ -23,7 +22,7 @@ import soot.util.Chain;
 /**
  * has superDefine
  * 
- * @author 
+ * @author asus
  *
  */
 public class SootRiskMthdFilter2 extends SootAna {

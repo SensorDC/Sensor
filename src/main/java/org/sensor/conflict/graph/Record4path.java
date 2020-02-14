@@ -35,7 +35,7 @@ public class Record4path extends IRecord {
 		this.pathlen = pathlen;
 	}
 
-	public String getRiskMthd() {
+    public String getRiskMethod() {
 		return riskMthd;
 	}
 

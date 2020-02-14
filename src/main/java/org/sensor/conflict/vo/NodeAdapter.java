@@ -21,7 +21,7 @@ import org.sensor.conflict.util.ClassifierUtil;
 import org.sensor.conflict.util.MavenUtil;
 
 /**
- * @author 
+ * @author w
  *
  */
 public class NodeAdapter {

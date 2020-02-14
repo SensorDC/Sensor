@@ -9,8 +9,11 @@ import org.sensor.conflict.util.SootUtil;
 import org.sensor.conflict.util.MavenUtil;
 import org.sensor.conflict.vo.ClassVO;
 import soot.PackManager;
+import soot.Scene;
 import soot.SceneTransformer;
 import soot.Transform;
+
+import static soot.SootClass.HIERARCHY;
 
 public class JarAna extends SootAna {
 	public static long runtime = 0;
@@ -33,7 +36,7 @@ public class JarAna extends SootAna {
 	 * @return
 	 */
 	public Map<String, ClassVO> deconstruct(List<String> jarFilePath) {
-		MavenUtil.i().getLog().info("use soot to deconstruct " + jarFilePath);
+//		MavenUtil.i().getLog().info("use soot to deconstruct " + jarFilePath);
 
 		long startTime = System.currentTimeMillis();
 
@@ -43,9 +46,7 @@ public class JarAna extends SootAna {
 		} else {
 			DsTransformer transformer = new DsTransformer(jarFilePath);
 			PackManager.v().getPack("wjtp").add(new Transform("wjtp.myTrans", transformer));
-			
-			SootUtil.modifyLogOut();
-			
+//			SootUtil.modifyLogOut();
 			soot.Main.main(args.toArray(new String[0]));
 			Map<String, ClassVO> clses = transformer.getClsTb();
 			soot.G.reset();

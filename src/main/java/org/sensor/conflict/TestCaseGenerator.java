@@ -96,9 +96,9 @@ public class TestCaseGenerator {
 					nds2remain.add(record.getName());
 				}
 			}
-			for (String name : nds2remain) {
-				System.out.println("test" + name);
-			}
+//			for (String name : nds2remain) {
+//				System.out.println("test" + name);
+//			}
 			Graph4path pathGraph = distanceGraph.getGraph4path();
 			if (pathGraph.getAllNode().isEmpty()) {
 				return false;

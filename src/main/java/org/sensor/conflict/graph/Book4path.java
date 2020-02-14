@@ -30,7 +30,7 @@ public class Book4path extends IBook {
 	public void addChild(IBook doneChildBook) {
 		for (IRecord iRecord : doneChildBook.getRecords()) {
 			Record4path record = (Record4path) iRecord;
-			addRecord(record.getRiskMthd(), this.getNodeName() + "\n" + record.getPathStr(), record.getPathlen() + 1);
+            addRecord(record.getRiskMethod(), this.getNodeName() + "\n" + record.getPathStr(), record.getPathlen() + 1);
 		}
 	}
 
@@ -40,7 +40,7 @@ public class Book4path extends IBook {
 		} else {//find shortest path 找最短路径
 			for (IRecord iRecord : this.records) {
 				Record4path record = (Record4path) iRecord;
-				if (riskMthd.equals(record.getRiskMthd())) {
+                if (riskMthd.equals(record.getRiskMethod())) {
 					if (length < record.getPathlen()) {
 						record.setPathStr(pathStr);
 						record.setPathlen(length);

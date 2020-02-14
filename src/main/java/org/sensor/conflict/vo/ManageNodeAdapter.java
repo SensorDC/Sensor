@@ -15,7 +15,7 @@ import org.sensor.conflict.util.MavenUtil;
  * design ManageNodeAdapter for depJar of this type.
  * 一些depJar可能来自依赖关系管理，而不是依赖树。我们为这种类型的depJar设计了ManageNodeAdapter。
 
- * @author 
+ * @author w
  *
  */
 public class ManageNodeAdapter extends NodeAdapter {

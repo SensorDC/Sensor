@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.sensor.conflict.GlobalVar;
-
 import org.sensor.conflict.container.DepJars;
 import org.sensor.conflict.util.MavenUtil;
 import org.sensor.conflict.util.SootUtil;
@@ -22,7 +21,7 @@ import soot.Transform;
 /**
  * filter for the riskMethod whose class exists in usedJar. hasFatherImpl
  * 
- * @author 
+ * @author asus
  *
  */
 public class SootRiskMthdFilter extends SootAna {

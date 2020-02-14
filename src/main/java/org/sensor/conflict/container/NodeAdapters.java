@@ -14,7 +14,7 @@ import org.sensor.conflict.vo.ManageNodeAdapter;
 import org.sensor.conflict.vo.NodeAdapter;
 
 /**
- * @author 
+ * @author asus
  *
  */
 public class NodeAdapters {

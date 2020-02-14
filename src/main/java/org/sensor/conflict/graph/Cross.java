@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 /**
  * 
- * @author 
+ * @author asus
  *
  */
 public class Cross {

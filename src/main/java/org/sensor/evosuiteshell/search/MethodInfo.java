@@ -3,6 +3,7 @@ package org.sensor.evosuiteshell.search;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.sensor.evosuiteshell.search.ClassInfo;
 import soot.SootMethod;
 import soot.Type;
 
@@ -31,9 +32,9 @@ public class MethodInfo {
 			this.paramTypes.add(param.toString());
 		}
 	}
-	
-	
-	public boolean isPrivate() {
+
+
+    public boolean isPrivate() {
 		return isPrivate;
 	}
 
@@ -45,9 +46,9 @@ public class MethodInfo {
 	public int getParamNum() {
 		return paramTypes.size();
 	}
-	
 
-	public ClassInfo getCls() {
+
+    public ClassInfo getCls() {
 		return cls;
 	}
 

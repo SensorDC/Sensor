@@ -3,7 +3,6 @@ package org.sensor.conflict.graph;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 
 public class GraphForMethodName implements IGraph {
 	public GraphForMethodName(HashMap<String, ArrayList<String>> accessibleMethod) {
