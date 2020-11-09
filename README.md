@@ -1,4 +1,4 @@
-![figure](https://github.com/SensorDC/Sensor/blob/master/Sensor%20logo%20ya.png)
+![figure](https://github.com/SensorDC/Sensor/blob/master/Sensor%20logo1.png)
 
 # Project description
 
