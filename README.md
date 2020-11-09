@@ -16,7 +16,7 @@ If the loaded version has inconsistent implementations with the intended but sha
 
 # A quick example
 
-We give an illustrative example code to describe how Sensor generates issue reports. As shown in Fig.1, client project directly depends on **a-1.0.jar**, **b-2.0.jar**, and libraries **b-1.0** are transitively introduced by **a-1.0.jar**. In such scenario, there are two versions of library **b** in this project. 
+We give an illustrative example code to describe how Sensor works. As shown in Fig.1, client project directly depends on **a-1.0.jar**, **b-2.0.jar**, and libraries **b-1.0** are transitively introduced by **a-1.0.jar**. In such scenario, there are two versions of library **b** in this project. 
 According to Maven’s _nearest wins strategy_, only **b-2.0.jar** can be loaded. By analyzing the dependencies, methods **method_b()** defined in library **b-1.0** are referenced by the client project via **a-1.0.jar**, which is unfortunately shadowed. Instead, **method_b()** (defined in **b-2.0.jar**) will be referenced. 
 Although there will be no runtime exceptions in this case, the semantic inconsistency of library method implementations (**method_b()** in **b-1.0.jar** and **b-2.0.jar**) will inappropriately affect the variable states of the client project via the invocation of the concerned methods, 
 leading to unexpected program behaviors.
