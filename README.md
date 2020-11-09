@@ -10,7 +10,7 @@ HomePage: https://sensordc.github.io
 
 Building software projects on top of third-party libraries is a common practice to save development cost and improve software quality.
 However, the heavy dependencies on third-party libraries often induce dependency conflict issues. 
-When multiple versions of the same library class are present on the {\mycode classpath}, the Java class loader will load only one version and shadow the others. 
+When multiple versions of the same library class are present on the classpath, the Java class loader will load only one version and shadow the others. 
 If the loaded version has inconsistent implementations with the intended but shadowed versions, dependency conflict issues will occur, inducing risks of runtime exceptions or unexpected program behaviors.
 
 # Our goal（没动，需要根据论文改）
