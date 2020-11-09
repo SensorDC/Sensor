@@ -14,7 +14,7 @@ When multiple versions of the same library class are present on the classpath, t
 If the loaded version has inconsistent implementations with the intended but shadowed versions, dependency conflict issues will occur, inducing risks of runtime exceptions or unexpected program behaviors.
 
 
-# How Sensor works
+# A quick example
 
 We give an illustrative example to describe how Sensor works. As shown in Fig.1, client project directly depends on **a-1.0.jar**, **b-2.0.jar**, and libraries **b-1.0** are transitively introduced by **a-1.0.jar**. In such scenario, there are two versions of library **b** in this project. 
 According to Maven’s _nearest wins strategy_, only **b-2.0.jar** can be loaded. By analyzing the dependencies, API **_SevConfig.getSize()_** defined in library **b-1.0** is referenced by the client project via **a-1.0.jar**, which is unfortunately shadowed. Instead, **_SevConfig.getSize()_** defined in **b-2.0.jar** will be referenced. 
