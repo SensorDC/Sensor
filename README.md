@@ -13,18 +13,6 @@ However, the heavy dependencies on third-party libraries often induce dependency
 When multiple versions of the same library class are present on the classpath, the Java class loader will load only one version and shadow the others. 
 If the loaded version has inconsistent implementations with the intended but shadowed versions, dependency conflict issues will occur, inducing risks of runtime exceptions or unexpected program behaviors.
 
-# Our goal（没动，需要根据论文改）
-
-Decca aims to detect dependency conflict issues and assess their severity levels according to their impacts on the system and maintenance costs. The severity levels are defined as follows:
-
-**Level 1:** the feature set referenced by host project is a subset of the actual loaded feature set. Besides, the shadowed version completely cover the feature set used by the host project. This indicates that any orders of the specification of these duplicate classes on the classpath will not induce serious runtime errors. Therefore, this is a benign conflict and will not affect the system reliability at runtime.
-
-**Level 2:** the feature set referenced by host project is a subset of the actual loaded feature set. However, the shadowed feature set doesn’t cover the referenced feature set. It is considered as a potential risk for system reliability since different orders of the specifications of these duplicate classes on the classpath (e.g., in different running environment or building platform) might induce runtime errors. Compared with warnings at Level 1, warnings at Level 2 needs more costs to maintain.
-
-**Level 3:** It is a harmful conflict, as the actual loaded feature set does not consume the feature set referenced by host project. The runtime errors will occur when the expected feature cannot be accessed. However, in this case, the shadowed feature set completely cover the feature set referenced by host project. Therefore, it can be solved by adjusting the dependency order on the classpath, without changing any source code.
-
-**Level 4:** It is a harmful conflict, as the actual loaded feature set does not cover the referenced feature set. Besides, the shadowed feature set does not consume the referenced
-feature set neither. Therefore, this type of conflicts can not be easily resolved by adjusting the dependency orders on the classpath. In this case, to solve these issues, it requires more efforts to ensure the multiple versions of classes could be referenced by host project.
 
 # A quick example
 
