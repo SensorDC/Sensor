@@ -46,7 +46,7 @@ Execute the following Linux shell command to analyze the project:
 >>
 >>mvn -f=pom.xml -DresultPath=/Report/ -Dmaven.test.skip=true org.sensor:sensor:1.0:semanticsConflict –e
 
-Then you can get the dependency issue report in your specified directory (e.g., **/Report/**).
+Then you can get the SC issue report in your specified directory (e.g., **/Report/**).
 
 >>> **Command explanations:**
 >>>
