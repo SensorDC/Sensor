@@ -2,7 +2,7 @@
 
 # Project description
 
-Sensor is Maven plugin which detects the dependency conflict issues that arise from referencing those APIs with identical method signatures but inconsistent behaviors across multiple library versions.
+Sensor is Maven plugin which detects the dependency conflict issues that arise from referencing the APIs with identical method signatures but inconsistent behaviors across multiple library versions.
 
 HomePage: https://sensordc.github.io
 
