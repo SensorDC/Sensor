@@ -38,7 +38,7 @@ You can run Sensor on the subjects based on the following steps:
 
 >> mvn install:install-file  -Dfile=/plugin-sensor/sensor-1.0.jar  -Dpom=/plugin-sensor/sensor-1.0.jar -DgroupId=org.sensor  -DartifactId=sensor -Dversion=1.0 -Dpackaging=maven-plugin
 
-**Step 3**: Detect and assess the dependency conflict issues.
+**Step 3**: Diagnose semantic conflict issues.
 
 Execute the following Linux shell command to analyze the project:
 
