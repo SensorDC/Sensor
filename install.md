@@ -3,7 +3,7 @@
 # How to use Sensor
 Sensor can take a Maven based project as input for analysis. The expected running environment is 64-bit Window operating system with JDK 1.8. **As Maven built projects need to download dependencies from Maven Central Repository, Sensor cannot work offline.**
 
-You can run Sensor on the subjects based on the following steps:
+You can run Sensor on your subjects based on the following steps:
 
 **Step 1**: Unzip the plugin-decca.zip to local directory. Recommended directory structure is:
 
