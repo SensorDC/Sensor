@@ -31,8 +31,11 @@ You can run Sensor on the subjects based on the following steps:
 
 
 >> mvn install:install-file  -Dfile=/plugin-sensor/soot-3.2.0.jar  -Dpom=/plugin-sensor/soot-3.2.0.jar -DgroupId=org.sensor  -DartifactId=soot -Dversion=3.2.0 -Dpackaging=jar
+
 >> mvn install:install-file  -Dfile=/plugin-sensor/jd-core-1.0.9.jar -Dpom=/plugin-sensor/jd-core-1.0.9.pom -DgroupId=org.sensor  -DartifactId=jd-core -Dversion=1.0.9 -Dpackaging=jar
+
 >> mvn install:install-file  -Dfile=/plugin-sensor/evosuite-client-1.0.6.jar  -Dpom=/plugin-sensor/evosuite-client-1.0.6.jar -DgroupId=org.sensor  -DartifactId=evosuite-client -Dversion=1.0.6 -Dpackaging=jar
+
 >> mvn install:install-file  -Dfile=/plugin-sensor/sensor-1.0.jar  -Dpom=/plugin-sensor/sensor-1.0.jar -DgroupId=org.sensor  -DartifactId=sensor -Dversion=1.0 -Dpackaging=maven-plugin
 
 **Step 3**: Detect and assess the dependency conflict issues.
