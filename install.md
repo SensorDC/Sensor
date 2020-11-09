@@ -48,18 +48,13 @@ Execute the following Linux shell command to analyze the project:
 
 Then you can get the dependency issue report in your specified directory (e.g., **/Report/**).
 
->>> **Command explanation:**
+>>> **Command explanations:**
 >>>
 >>> >(1) -f=pom file : Specify the project under analysis;
 >>> >
->>> >(2) -DresultPath=output issue report directory : Output the issue report to the specified folder(default:"./");
+>>> >(2) -DresultPath=output issue report directory : Output the issue report in specified directory(default:"./");
 >>> >
->>> >(3) -DprintDiff=output semantics method pairs diff(default:"false");
+>>> >(3) -DprintDiff=output the differences between conflicting API pairs (default:"false");
 >>> >
 >>> >(4) -DrunTime=How many times does Evosuite run(default:1);
->>>
->>> **Goals:**
->>>
->>> >(1) semanticsConflict: semantics methods pairs from dependency conflict;
->>> >(2) SemanticsConflictSupImpl: semantics methods pairs from dependency conflict with super impl;
->>> >(3) classDupRisk: semantics methods pairs from class conflict;
+
