@@ -6,13 +6,12 @@ Sensor is Maven plugin which detects the dependency conflict issues that arise f
 
 HomePage: https://sensordc.github.io
 
-# Background（没动，需要根据论文改）
+# Background 
 
-Software projects depend on an increasing number of third party libraries. Since a depended library might depend on other libraries, a host project would transitively depend on more libraries. Such intensive dependencies on third-party libraries can easily lead to dependency conflicts in practice. That is, multiple versions of the same library or class are presented on the classpath. When multiple classes with the same fully-qualified name exist in a Java project, the JVM will load one of them and shadow the others. If these classes are not compatible, the project can exhibit unexpected behaviors when it has components relying on the shadowed ones.
-
-Maven does a good job in dependency conflict resolution, it usually applied the “nearest wins strategy” to choose the version that is nearer to the root (host project) of the dependency tree, or “first declaration wins strategy” to choose the first declared classes or libraries and "shadow" the ones with the same fully-qualified names or project coordinates. Consequently, it does not guarantee loading the most appropriate class. The dependency conflict issue arises when the loaded classes are not the expected ones of the project (i.e., the referenced feature set of the project is not fully covered by the loaded classes).
-
-Maven can warn developers of duplicate JARs and classes, but they cannot identify whether the duplications are benign or harmful, which leads to developers may overlook the harmful ones and take no resolution actions.
+Buildingsoftware projects on top of third-party libraries is a common practice to save development cost and improve software quality.
+However, the heavy dependencies on third-party libraries often induce dependency conflict issues. 
+When multiple versions of the same library class are present on the {\mycode classpath}, the Java class loader will load only one version and shadow the others. 
+If the loaded version has inconsistent implementations with the intended but shadowed versions, dependency conflict issues will occur, inducing risks of runtime exceptions or unexpected program behaviors.
 
 # Our goal（没动，需要根据论文改）
 
