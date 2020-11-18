@@ -1,5 +1,12 @@
 package org.sensor.conflict.util;
 
+import org.sensor.conflict.vo.NodeAdapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Conf {
     public static final boolean CLASS_DUP = false;
     public static final boolean FLT_INTERFACE = false;
@@ -46,8 +53,8 @@ public class Conf {
 
     public static boolean printDiff;
 
-    //default 线程数为cpu+1
-    public static int nThreads = Runtime.getRuntime().availableProcessors() + 1;
+    //default 线程数为cpu+1 服务器为5
+    public static int nThreads = 5;//Runtime.getRuntime().availableProcessors() + 1;
 
     //最大风险方法数 默认100
     public static int MAX_RISK_METHOD_NUM = 100;
@@ -55,6 +62,15 @@ public class Conf {
     public static int semanticsPrintNum;
 
     public static String targetJar = null;
+
+    // to record exclude
+    public static Map<String, List<NodeAdapter>> dependencyMap = new HashMap<>();
+
+    // first level
+    public static List<NodeAdapter> needAddNodeList = new ArrayList<>();
+
+    // second level
+    public static List<NodeAdapter> firstLevelNeedAddNodeList = new ArrayList<>();
 }
 
 //public class Conf {

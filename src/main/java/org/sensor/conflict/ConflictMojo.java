@@ -1,8 +1,10 @@
 package org.sensor.conflict;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.sensor.conflict.vo.NodeAdapter;
 import org.apache.maven.artifact.factory.ArtifactFactory;
 import org.apache.maven.artifact.handler.manager.ArtifactHandlerManager;
 import org.apache.maven.artifact.repository.ArtifactRepository;
@@ -24,6 +26,10 @@ import org.sensor.conflict.container.Conflicts;
 import org.sensor.conflict.util.Conf;
 import org.sensor.conflict.util.MavenUtil;
 import org.sensor.conflict.vo.DepJar;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 
 public abstract class ConflictMojo extends AbstractMojo {
     @Parameter(defaultValue = "${session}", readonly = true, required = true)
@@ -113,6 +119,8 @@ public abstract class ConflictMojo extends AbstractMojo {
 
     public long systemFileSize = 0;// byte
 
+    public List<String> noPomPaths = new ArrayList<>();
+
     // 初始化全局变量
     protected void initGlobalVar() throws Exception {
         MavenUtil.i().setMojo(this);
@@ -131,6 +139,9 @@ public abstract class ConflictMojo extends AbstractMojo {
 
         // 初始化NodeAdapters
         NodeAdapters.init(root);
+
+        getNodePomPath();
+
         // 初始化DepJars
         DepJars.init(NodeAdapters.i());// occur jar in tree
         // 验证系统大小
@@ -139,6 +150,78 @@ public abstract class ConflictMojo extends AbstractMojo {
         AllCls.init(DepJars.i());
         // 初始化树中的版本冲突
         Conflicts.init(NodeAdapters.i());// version conflict in tree 初始化树中的版本冲突
+    }
+
+    /**
+     * get node pom path
+     */
+    private void getNodePomPath(){
+        String localPomPath;
+        for(NodeAdapter node : NodeAdapters.i().getAllNodeAdapter()){
+            if(node.isNodeSelected()) {
+                if (NodeAdapters.i().getNodeAdapter(root).getGroupId().equals(node.getGroupId())
+                        && NodeAdapters.i().getNodeAdapter(root).getArtifactId().equals(node.getArtifactId())){
+                    localPomPath = MavenUtil.i().getProjectPom();
+                }else {
+                    String localDirPath = MavenUtil.i().getMvnRep() + node.getGroupId().replace(".", File.separator) +
+                            File.separator + node.getArtifactId() + File.separator + node.getVersion() + File.separator;
+                    localPomPath = localDirPath + node.getArtifactId() + "-" + node.getVersion() + ".pom";
+                }
+                detectExclude(localPomPath, node);
+            }
+        }
+//		MavenUtil.i().getLog().warn("size : " + Conf.dependencyMap.size());
+//		for(String excludeNode : Conf.dependencyMap.keySet()){
+//			MavenUtil.i().getLog().warn("excludeNode : " + excludeNode);
+//			List<NodeAdapter> dependencyNodeList = Conf.dependencyMap.get(excludeNode);
+//			for(NodeAdapter dependencyNode : dependencyNodeList){
+//				MavenUtil.i().getLog().warn(dependencyNode.getSelectedNodeWholeSig());
+//			}
+//		}
+    }
+
+    /**
+     * detect whether has exclusion
+     * @param localPomPath : local pom path
+     * @param node
+     */
+    private void detectExclude(String localPomPath, NodeAdapter node){
+        File file = new File(localPomPath);
+        if (file.exists()){
+            SAXReader reader = new SAXReader();
+            try {
+                Document document = reader.read(file);
+                Element root = document.getRootElement();
+                Element dependencies = root.element("dependencies");
+                if(dependencies != null) {
+                    for (Object o : dependencies.elements("dependency")) {
+                        Element dependency = (Element) o;
+                        Element exclusions = dependency.element("exclusions");
+                        if (exclusions != null) {
+                            for (Object oTwo : exclusions.elements("exclusion")) {
+                                Element exclusion = (Element) oTwo;
+                                Element groupId = exclusion.element("groupId");
+                                Element artId = exclusion.element("artifactId");
+                                String name = groupId.getText() + ":" + artId.getText();
+                                if (Conf.dependencyMap.containsKey(name)) {
+                                    List<NodeAdapter> dependencyNodeList = Conf.dependencyMap.get(name);
+                                    dependencyNodeList.add(node);
+                                    Conf.dependencyMap.put(name, dependencyNodeList);
+                                } else {
+                                    List<NodeAdapter> dependencyNodeList = new ArrayList<>();
+                                    dependencyNodeList.add(node);
+                                    Conf.dependencyMap.put(name, dependencyNodeList);
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (DocumentException e) {
+                e.printStackTrace();
+            }
+        } else {
+            noPomPaths.add(localPomPath);
+        }
     }
 
     private void validateSystemSize() throws Exception {

@@ -148,6 +148,6 @@ public class MavenUtil {
     }
 
     public String getMvnRep() {
-        return this.mojo.localRepository.getBasedir() + "\\";
+        return this.mojo.localRepository.getBasedir() + File.separator;
     }
 }

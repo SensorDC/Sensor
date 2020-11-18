@@ -88,7 +88,7 @@ public class DepJarJRisk {
      * @return
      */
     public Set<String> getThrownMthds() {
-        // e.g.:"<org.sensor.plug.testcase.homemade.host.prob.ProbBottom: void m()>"
+        // e.g.:"<neu.lab.plug.testcase.homemade.host.prob.ProbBottom: void m()>"
         thrownMthds = usedDepJar.getRiskMthds(depJar.getallMethods());
         MavenUtil.i().getLog().info("riskMethod size before filter: " + thrownMthds.size());
         if (thrownMthds.size() > 0)
@@ -117,7 +117,6 @@ public class DepJarJRisk {
         MavenUtil.i().getLog().info("riskMethod size after filter2: " + thrownMthds.size());
         return thrownMthds;
     }
-
     /**
      * 语义冲突得到相关方法
      *
@@ -182,9 +181,9 @@ public class DepJarJRisk {
      */
     public Graph4distance getGraph4distance() {
         if (graph4distance == null) {
-            Set<String> thrownmethods = getThrownMthds();
-            if (thrownmethods.size() > 0) {
-                IGraph iGraph = SootJRiskCg.i().getGraph(this, new JRiskDistanceCgTf(this, thrownmethods));
+            Set<String> thrownMethods = getThrownMthds();
+            if (thrownMethods.size() > 0) {
+                IGraph iGraph = SootJRiskCg.i().getGraph(this, new JRiskDistanceCgTf(this, thrownMethods));
                 if (iGraph != null) {
                     graph4distance = (Graph4distance) iGraph;
                 } else {
@@ -204,9 +203,9 @@ public class DepJarJRisk {
      * @return
      */
     public Graph4distance getGraph4distance(DepJar useDepJar) {
-        Set<String> thrownmethods = getThrownMthds(useDepJar);
-        if (thrownmethods.size() > 0) {
-            IGraph iGraph = SootJRiskCg.i().getGraph(this, new JRiskDistanceCgTf(this, thrownmethods));
+        Set<String> thrownMethods = getThrownMthds(useDepJar);
+        if (thrownMethods.size() > 0) {
+            IGraph iGraph = SootJRiskCg.i().getGraph(this, new JRiskDistanceCgTf(this, thrownMethods));
             if (iGraph != null) {
                 return (Graph4distance) iGraph;
             } else {
@@ -218,9 +217,9 @@ public class DepJarJRisk {
     }
 
     public Graph4path getGraph4mthdPath() {
-        Set<String> semantemeRiskMethods = getSemantemeRiskMethods();
-        if (semantemeRiskMethods.size() > 0) {
-            IGraph iGraph = SootJRiskCg.i().getGraph(this, new JRiskMthdPathCgTf(this, semantemeRiskMethods));
+        Set<String> thrownMethods = getThrownMthds();
+        if (thrownMethods.size() > 0) {
+            IGraph iGraph = SootJRiskCg.i().getGraph(this, new JRiskMthdPathCgTf(this, thrownMethods));
             if (iGraph != null) {
                 return (Graph4path) iGraph;
             } else {

@@ -1,13 +1,9 @@
 package org.sensor.evosuiteshell.search;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.sensor.conflict.container.DepJars;
-import org.sensor.conflict.soot.JarAna;
-import org.sensor.conflict.vo.ClassVO;
 import soot.Scene;
 import soot.SceneTransformer;
 import soot.SootClass;
@@ -40,9 +36,9 @@ public class ClassTransformer extends SceneTransformer {
 //        }
         for (SootClass sootClass : allClass) {
             ClassInfo clsVO = new ClassInfo(sootClass);
-//            if (!classesSig.contains(clsVO.getSig())) {
-//                continue;
-//            }
+            if (!classesSig.contains(clsVO.getSig())) {
+                continue;
+            }
             ProjectInfo.i().addClass(clsVO);
             for (MethodInfo methodInfo : clsVO.getMthds()) {
                 ProjectInfo.i().addMethod(methodInfo);

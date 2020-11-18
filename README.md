@@ -69,4 +69,4 @@ This project references the open source projects Soot, Apache Commons CSV, DOM4J
 
 # Contact author
 
-wangying@swc.neu.edu.cn
+wangying@swc.org.edu.cn

@@ -3,7 +3,6 @@ package org.sensor.conflict.writer;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -81,8 +80,9 @@ public class SemanticsRiskWriter {
 
         } catch (Exception e) {
             MavenUtil.i().getLog().error(e);
+        } finally {
+            printer.close();
         }
-        printer.close();
     }
 
     private String addJarPath(String mthdCallPath) {

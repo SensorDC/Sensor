@@ -1,12 +1,8 @@
 package org.sensor.conflict.vo;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
+import org.sensor.conflict.util.Conf;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.resolver.ArtifactNotFoundException;
 import org.apache.maven.artifact.resolver.ArtifactResolutionException;
@@ -60,6 +56,10 @@ public class NodeAdapter {
 		} catch (ArtifactNotFoundException e) {
 			MavenUtil.i().getLog().warn("cant resolve " + this.toString());
 		}
+	}
+
+	public String getSelectedNodeWholeSig(){
+		return getGroupId() + ":" + getArtifactId() + ":" + getVersion();
 	}
 
 	public String getGroupId() {
@@ -157,6 +157,107 @@ public class NodeAdapter {
 			father = father.getParent();
 		}
 		return jarCps;
+	}
+
+	/**
+	 * get immediate ancestor jar class paths, don't contain cousins
+	 * @param includeSelf : whether includes self
+	 * @return List<String> jarCps
+	 */
+	public Collection<String> getImmediateAncestorJarCps(boolean includeSelf){
+		Set<NodeAdapter> loadedNodes = new HashSet<>();
+		if (includeSelf) {
+			loadedNodes.add(NodeAdapters.i().getNodeAdapter(node));
+		}
+		List<String> jarCps = new ArrayList<String>();
+		NodeAdapter father = getParent();
+		while (null != father) {
+			loadedNodes.add(father);
+			father = father.getParent();
+		}
+		//first level
+		Map<String, NodeAdapter> loadedNodesMap = initLoadedNodesMap(loadedNodes);
+		List<NodeAdapter> needAddNodes = addExcludeNodes(loadedNodesMap);
+
+		Conf.needAddNodeList.addAll(needAddNodes);
+		for(NodeAdapter needAddNode : needAddNodes){
+			loadedNodes.add(needAddNode);
+			NodeAdapter needAddFather = needAddNode.getParent();
+			while (null != needAddFather) {
+				loadedNodes.add(needAddFather);
+				needAddFather = needAddFather.getParent();
+			}
+		}
+
+
+		//second level
+		Map<String, NodeAdapter> firstLevelNeedAddNodesMap = initLoadedNodesMap(needAddNodes);
+		List<NodeAdapter> firstLevelNeedAddNodes = addExcludeNodes(firstLevelNeedAddNodesMap);
+		Conf.firstLevelNeedAddNodeList.addAll(firstLevelNeedAddNodes);
+		for(NodeAdapter firstLevelNeedAddNode : firstLevelNeedAddNodes){
+			loadedNodes.add(firstLevelNeedAddNode);
+			NodeAdapter needAddFather = firstLevelNeedAddNode.getParent();
+			while (null != needAddFather) {
+				loadedNodes.add(needAddFather);
+				needAddFather = needAddFather.getParent();
+			}
+		}
+
+		loadedNodes.remove(NodeAdapters.i().getNodeAdapter(node));
+
+		for(NodeAdapter loadedNode : loadedNodes){
+			jarCps.addAll(loadedNode.getFilePath());
+		}
+
+		return jarCps;
+	}
+
+	/**
+	 * init loaded nodes, used to search excluded nodes
+	 * @param loadedNodes
+	 * @return Map<String, NodeAdapter> loadedNodesMap
+	 */
+	private Map<String, NodeAdapter> initLoadedNodesMap(Set<NodeAdapter> loadedNodes){
+		Map<String, NodeAdapter> loadedNodesMap = new HashMap<>();
+		for(NodeAdapter loadedNode : loadedNodes){
+			String sig = loadedNode.getOnlySelectedNodeSig();
+			loadedNodesMap.put(sig, loadedNode);
+		}
+		return loadedNodesMap;
+	}
+
+	/**
+	 * init loaded nodes, used to search excluded nodes
+	 * @param needAddNodes
+	 * @return Map<String, NodeAdapter> loadedNodesMap
+	 */
+	private Map<String, NodeAdapter> initLoadedNodesMap(List<NodeAdapter> needAddNodes){
+		Map<String, NodeAdapter> loadedNodesMap = new HashMap<>();
+		for(NodeAdapter loadedNode : needAddNodes){
+			String sig = loadedNode.getOnlySelectedNodeSig();
+			loadedNodesMap.put(sig, loadedNode);
+		}
+		return loadedNodesMap;
+	}
+
+
+	public String getOnlySelectedNodeSig(){
+		return getGroupId() + ":" + getArtifactId();
+	}
+
+	/**
+	 * if the node is excluded, add it
+	 * @param loadedNodesMap
+	 * @return List<NodeAdapter> needAddNodes
+	 */
+	private List<NodeAdapter> addExcludeNodes(Map<String, NodeAdapter> loadedNodesMap){
+		List<NodeAdapter> needAddNodes = new ArrayList<>();
+		for(Map.Entry<String, List<NodeAdapter>> entry : Conf.dependencyMap.entrySet()){
+			if (loadedNodesMap.containsKey(entry.getKey())){
+				needAddNodes.addAll(entry.getValue());
+			}
+		}
+		return needAddNodes;
 	}
 	
 	/**

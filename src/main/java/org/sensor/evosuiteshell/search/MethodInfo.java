@@ -3,7 +3,6 @@ package org.sensor.evosuiteshell.search;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.sensor.evosuiteshell.search.ClassInfo;
 import soot.SootMethod;
 import soot.Type;
 

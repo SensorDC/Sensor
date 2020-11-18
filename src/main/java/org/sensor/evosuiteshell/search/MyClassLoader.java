@@ -1,8 +1,6 @@
 package org.sensor.evosuiteshell.search;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -59,8 +57,8 @@ public class MyClassLoader {
     }
 
 //    public static void main(String[] args) throws ClassNotFoundException {
-////        MyClassLoader.classLoader(new File("/Users/wangchao/Host-1.0.jar"), "org.sensor.Host.Host");
+////        MyClassLoader.classLoader(new File("/Users/wangchao/Host-1.0.jar"), "neu.lab.Host.Host");
 //        MyClassLoader.jarLoader(new File("/Users/wangchao/eclipse-workspace/Host/target/Host-1.0.jar"));
-//        System.out.println(MyClassLoader.loaderClass("org.sensor.Host.Host"));
+//        System.out.println(MyClassLoader.loaderClass("neu.lab.Host.Host"));
 //    }
 }

@@ -47,7 +47,7 @@ public class Dog {
 	 * @param strategyType 策略
 	 * @return
 	 */
-	public Map<String, IBook> findRlt(Collection<String> entrys, int maxDep, Dog.Strategy strategyType) {
+	public Map<String, IBook> findRlt(Collection<String> entrys, int maxDep, Strategy strategyType) {
 		MavenUtil.i().getLog().info("dog starts running with depth " + maxDep);
 		Set<String> sortedEntrys = new TreeSet<String>(); // 对输入节点排序
 		// TODO

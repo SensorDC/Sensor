@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.sensor.conflict.util.SootUtil;
-import org.sensor.conflict.util.MavenUtil;
 import org.sensor.conflict.vo.ClassVO;
 import soot.PackManager;
 import soot.Scene;

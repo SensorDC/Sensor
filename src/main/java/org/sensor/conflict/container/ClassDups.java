@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.sensor.conflict.container.DepJars;
 import org.sensor.conflict.risk.jar.DepJarJRisk;
 import org.sensor.conflict.vo.ClassDup;
 import org.sensor.conflict.vo.DepJar;

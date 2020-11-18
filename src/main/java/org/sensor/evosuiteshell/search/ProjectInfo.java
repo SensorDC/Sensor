@@ -1,8 +1,6 @@
 package org.sensor.evosuiteshell.search;
 
 
-import org.sensor.conflict.util.MavenUtil;
-
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashMap;

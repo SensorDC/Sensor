@@ -1,15 +1,9 @@
 package org.sensor.evosuiteshell.search;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.*;
 
 import org.sensor.conflict.soot.JarAna;
-import org.sensor.conflict.vo.ClassVO;
-import org.sensor.evosuiteshell.generate.GenericObjectSet;
 import soot.PackManager;
 import soot.Transform;
 
@@ -17,11 +11,11 @@ public class SootExe {
     public void initProjectInfo(String[] jarFilePath) {
 //		System.out.println("jarFilePath size"+ jarFilePath);
         List<String> args = getArgs(jarFilePath);
-//        Set<String> classesSig = JarAna.i().deconstruct(Arrays.asList(jarFilePath)).keySet();
+        Set<String> classesSig = JarAna.i().deconstruct(Arrays.asList(jarFilePath)).keySet();
 //		System.out.println("args size"+ args);
         if (args.size() != 0) {
 
-            ClassTransformer transformer = new ClassTransformer();
+            ClassTransformer transformer = new ClassTransformer(classesSig);
 
             PackManager.v().getPack("wjtp").add(new Transform("wjtp.myTrans", transformer));
 
@@ -97,10 +91,10 @@ public class SootExe {
 //	public static void main(String[] args) throws IOException {
 //        new SootExe().initProjectInfo(
 //                new String[]{"/Users/wangchao/eclipse-workspace/Host/target/Host-1.0.jar"});
-//        ProjectInfo.i().setEntryCls("org.sensor.Host.Host");
+//        ProjectInfo.i().setEntryCls("neu.lab.Host.Host");
 //        MyClassLoader.jarLoader(new File("/Users/wangchao/eclipse-workspace/Host/target/Host-1.0.jar"));
-////		System.out.println(ProjectInfo.i().getClassInfo("org.sensor.A.Principal"));
-//        GenericObjectSet.getInstance().generateGenericObject("org.sensor.Host.Host");
+////		System.out.println(ProjectInfo.i().getClassInfo("neu.lab.A.Principal"));
+//        GenericObjectSet.getInstance().generateGenericObject("neu.lab.Host.Host");
 ////		PrintWriter printer = new PrintWriter(new BufferedWriter(
 ////				new FileWriter("/Users/wangchao/个人文件/东北大学/实验室/实验室台式/eclipse/Host/target/1.txt", false)));
 ////		printer.println(ProjectInfo.i().getAllClassInfo());

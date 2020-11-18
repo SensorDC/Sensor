@@ -530,4 +530,25 @@ public class DepJar {
     public String getDepJarName() {
         return (groupId + artifactId + version).replaceAll("\\p{Punct}", "");
     }
+
+    public Collection<String> getPrcDirPaths() {
+        List<String> classpaths = new ArrayList<String>();
+        MavenUtil.i().getLog().info("not add all jar to process");
+        try{
+            classpaths.addAll(this.getJarFilePaths(true));
+            classpaths.addAll(this.getOnlyFatherJarCps(true));
+        }catch(NullPointerException e){
+            classpaths = new ArrayList<String>();
+        }
+//        MavenUtil.i().getLog().info("class path size : " + classpaths.size());
+        return classpaths;
+    }
+
+    public Set<String> getOnlyFatherJarCps(boolean includeSelf) {
+        Set<String> fatherJarCps = new HashSet<String>();
+        for (NodeAdapter node : this.nodeAdapters) {
+            fatherJarCps.addAll(node.getImmediateAncestorJarCps(includeSelf));
+        }
+        return fatherJarCps;
+    }
 }

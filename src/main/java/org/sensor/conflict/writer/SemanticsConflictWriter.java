@@ -34,7 +34,6 @@ import org.sensor.conflict.util.SootUtil;
 import org.sensor.conflict.vo.Conflict;
 import org.sensor.conflict.vo.DependencyInfo;
 import org.sensor.evosuiteshell.junit.ExecuteJunit;
-import org.evosuite.utils.LoggingUtils;
 
 public class SemanticsConflictWriter {
     private Map<String, IBook> pathBooks;
@@ -166,8 +165,8 @@ public class SemanticsConflictWriter {
 ////        try {
 ////            System.out.println(1111);
 ////            Class<?> Host = instrumentingClassLoader.loadClass(className);
-//////            Class<?> Host = instrumentingClassLoader.loadClassFromFile("org.sensor.Host.Host", "/Users/wangchao/eclipse-workspace/Host/target/classes/neu/lab/Host/Host.class");
-////            Class<?> Hosttest = instrumentingClassLoader.loadClassFromFile("org.sensor.Host.HostTest", "/Users/wangchao/eclipse-workspace/Host/target/test-classes/neu/lab/Host/HostTest.class");
+//////            Class<?> Host = instrumentingClassLoader.loadClassFromFile("neu.lab.Host.Host", "/Users/wangchao/eclipse-workspace/Host/target/classes/neu/lab/Host/Host.class");
+////            Class<?> Hosttest = instrumentingClassLoader.loadClassFromFile("neu.lab.Host.HostTest", "/Users/wangchao/eclipse-workspace/Host/target/test-classes/neu/lab/Host/HostTest.class");
 ////            ObjectPool.getPoolFromJUnit(new GenericClass(Host), Hosttest);
 ////        } catch (ClassNotFoundException e) {
 ////            e.printStackTrace();
@@ -186,7 +185,7 @@ public class SemanticsConflictWriter {
 //        new SootExe().initProjectInfo(new String[]{hostJarPath});
 //        ProjectInfo.i().setEntryCls(className);
 //        MyClassLoader.jarLoader(new File(hostJarPath));
-////    System.out.println(ProjectInfo.i().getClassInfo("org.sensor.A.Principal"));
+////    System.out.println(ProjectInfo.i().getClassInfo("neu.lab.A.Principal"));
 //        GenericObjectSet.getInstance().generateGenericObject(className);
 //    }
 

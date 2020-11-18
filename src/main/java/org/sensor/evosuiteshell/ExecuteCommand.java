@@ -123,7 +123,7 @@ public class ExecuteCommand {
 ////		List<DependencyInfo> DependencyInfos = new ArrayList<DependencyInfo>();
 ////		DependencyInfo dependencyInfo = new DependencyInfo();
 ////		dependencyInfo.setArtifactId("B");
-////		dependencyInfo.setGroupId("org.sensor");
+////		dependencyInfo.setGroupId("neu.lab");
 ////		dependencyInfo.setVersion("1.0");
 ////		DependencyInfos.add(dependencyInfo);
 ////		ReadXML.setCopyDependency(DependencyInfos, targetFile);

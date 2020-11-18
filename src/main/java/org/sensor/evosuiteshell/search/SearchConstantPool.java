@@ -1,8 +1,5 @@
 package org.sensor.evosuiteshell.search;
 
-import org.evosuite.runtime.Random;
-import org.hsqldb.lib.Set;
-
 import java.util.HashMap;
 import java.util.HashSet;
 

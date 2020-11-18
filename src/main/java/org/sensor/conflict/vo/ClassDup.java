@@ -5,10 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.sensor.conflict.vo.ClassVO;
-import org.sensor.conflict.vo.DepJar;
-import org.sensor.conflict.vo.MethodVO;
-
 public class ClassDup {
 	private String clsSig;
 	private List<DepJar> depJars;

@@ -159,7 +159,7 @@ public class CodeGenerator {
 ////			e.printStackTrace();
 ////		}
 //        List<String> callPath = new ArrayList<String>();
-//        callPath.add("<org.sensor.Host.Host: int onStart()>");
+//        callPath.add("<neu.lab.Host.Host: int onStart()>");
 //        System.out.println(new CodeGenerator(callPath, new String[]{"/Users/wangchao/个人文件/东北大学/实验室/实验室台式/eclipse/Host/target/Host-1.0.jar"}).getCode());
 //
 //    }
